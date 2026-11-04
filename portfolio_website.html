@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nazhifa Filza Darayanicha | Portfolio</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            dark: '#1e293b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #ffffff;
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(244, 114, 182, 0.18);
+            box-shadow: 0 10px 30px -10px rgba(244, 114, 182, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(244, 114, 182, 0.4);
+            box-shadow: 0 20px 35px -10px rgba(244, 114, 182, 0.15);
+        }
+
+        /* Ambient Pink Floating Orbs */
+        .pink-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(90px);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.45;
+        }
+
+        .pink-orb-1 {
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, #f472b6 0%, #ffd1dc 100%);
+            top: -100px;
+            left: -100px;
+            animation: floatSlow 14s ease-in-out infinite alternate;
+        }
+
+        .pink-orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #fbcfe8 0%, #f472b6 100%);
+            bottom: 5%;
+            right: -120px;
+            animation: floatReverse 16s ease-in-out infinite alternate;
+        }
+
+        .pink-orb-3 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, #ffe4e6 0%, #f43f5e 100%);
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: floatSlow 18s ease-in-out infinite alternate;
+            opacity: 0.25;
+        }
+
+        @keyframes floatSlow {
+            0% { transform: translate(0px, 0px) scale(1); }
+            50% { transform: translate(30px, 40px) scale(1.08); }
+            100% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        @keyframes floatReverse {
+            0% { transform: translate(0px, 0px) scale(1); }
+            50% { transform: translate(-40px, -30px) scale(1.05); }
+            100% { transform: translate(25px, -15px) scale(0.92); }
+        }
+
+        /* Typing Effect Caret */
+        .typed-cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: #f43f5e;
+            margin-left: 4px;
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Scroll Reveal Animation Classes */
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-item.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Modal Overlay Transition */
+        .modal-backdrop {
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        .modal-content-box {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease-in-out;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f8fafc;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f472b6;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e11d48;
+        }
+    </style>
+</head>
+<body class="relative bg-white text-slate-800 antialiased selection:bg-rose-100 selection:text-rose-600">
+
+    <!-- Gaussian Blur Pink Ambient Glow Orbs -->
+    <div class="pink-orb pink-orb-1"></div>
+    <div class="pink-orb pink-orb-2"></div>
+    <div class="pink-orb pink-orb-3"></div>
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/80 border-b border-pink-100/60 transition-all">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo -->
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-rose-500 via-pink-400 to-rose-300 flex items-center justify-center text-white font-extrabold text-lg shadow-md shadow-pink-200 group-hover:scale-105 transition-transform">
+                    ND
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-extrabold text-slate-900 tracking-tight text-base group-hover:text-rose-600 transition-colors">
+                        Nazhifa Filza
+                    </span>
+                    <span class="text-[11px] font-medium text-slate-600 tracking-wider uppercase">Portfolio</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+                <a href="#about" class="hover:text-rose-600 transition-colors">About</a>
+                <a href="#experience" class="hover:text-rose-600 transition-colors">Experiences</a>
+                <a href="#writings" class="hover:text-rose-600 transition-colors">Writings & Articles</a>
+                <a href="#awards" class="hover:text-rose-600 transition-colors">Honors & Certs</a>
+                <a href="#contact" class="hover:text-rose-600 transition-colors">Contact</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <div class="hidden md:flex items-center gap-3">
+                <a href="mailto:nazhifadara6@gmail.com" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold text-white bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 hover:from-rose-600 hover:to-pink-600 transition-all duration-300 shadow-md shadow-slate-200 hover:shadow-pink-200 hover:scale-105">
+                    <i class="fa-regular fa-paper-plane text-xs"></i>
+                    Get In Touch
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 rounded-xl bg-pink-50 border border-pink-200 text-slate-700 flex items-center justify-center text-lg">
+                <i class="fa-solid fa-bars" id="menu-icon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-xl border-b border-pink-100 px-6 py-6 transition-all space-y-4">
+            <a href="#about" onclick="toggleMobileMenu()" class="block text-sm font-semibold text-slate-700 hover:text-rose-600 py-1">About</a>
+            <a href="#experience" onclick="toggleMobileMenu()" class="block text-sm font-semibold text-slate-700 hover:text-rose-600 py-1">Experiences</a>
+            <a href="#writings" onclick="toggleMobileMenu()" class="block text-sm font-semibold text-slate-700 hover:text-rose-600 py-1">Writings & Articles</a>
+            <a href="#awards" onclick="toggleMobileMenu()" class="block text-sm font-semibold text-slate-700 hover:text-rose-600 py-1">Honors & Certs</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block text-sm font-semibold text-slate-700 hover:text-rose-600 py-1">Contact</a>
+            <a href="mailto:nazhifadara6@gmail.com" class="block text-center w-full py-3 rounded-xl text-xs font-bold text-white bg-rose-600 shadow-md">
+                Get In Touch
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative z-10 pt-12 pb-20 md:pt-20 md:pb-28">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Text Left -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left reveal-item">
+                    
+                    <!-- Top Status Badge -->
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-50/90 border border-pink-200/80 text-rose-600 text-xs font-bold shadow-xs">
+                        <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+                        <span class="w-2 h-2 rounded-full bg-rose-500 -ml-4"></span>
+                        English Education Student @ Universitas Negeri Malang
+                    </div>
+
+                    <!-- Heading Name -->
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                        Hi, I'm <br class="hidden sm:inline">
+                        <span class="bg-gradient-to-r from-slate-900 via-rose-600 to-pink-500 bg-clip-text text-transparent">
+                            Nazhifa Filza Darayanicha
+                        </span>
+                    </h1>
+
+                    <!-- Dynamic Typing Subtitle -->
+                    <div class="text-lg sm:text-xl font-bold text-slate-600 h-8 flex items-center justify-center lg:justify-start">
+                        <span>I am a&nbsp;</span>
+                        <span id="typed-text" class="text-rose-600 font-extrabold"></span>
+                        <span class="typed-cursor"></span>
+                    </div>
+
+                    <!-- Short Bio -->
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        An enthusiastic 5th-semester English Education student specializing in <strong>journalistic reporting, media publishing, creative narrative storytelling, and English instruction</strong>. Experienced in publishing 50+ official news articles for Universitas Negeri Malang and crafting award-winning national literature.
+                    </p>
+
+                    <!-- Contact Quick Pills -->
+                    <div class="pt-2 flex flex-wrap gap-3 justify-center lg:justify-start text-xs font-semibold text-slate-600">
+                        <span class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100/80 border border-slate-200">
+                            <i class="fa-solid fa-location-dot text-rose-500"></i> Malang, East Java
+                        </span>
+                        <a href="mailto:nazhifadara6@gmail.com" class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100/80 border border-slate-200 hover:border-pink-300 hover:text-rose-600 transition-colors">
+                            <i class="fa-solid fa-envelope text-rose-500"></i> nazhifadara6@gmail.com
+                        </a>
+                        <span class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100/80 border border-slate-200">
+                            <i class="fa-solid fa-phone text-rose-500"></i> 085-895-890-763
+                        </span>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                        <a href="#writings" class="px-7 py-3.5 rounded-2xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs sm:text-sm shadow-lg shadow-pink-200 hover:shadow-pink-300 transition-all hover:scale-105 flex items-center gap-2">
+                            <i class="fa-solid fa-book-open"></i> Read My Writings
+                        </a>
+                        <a href="#awards" class="px-7 py-3.5 rounded-2xl bg-white hover:bg-pink-50/50 text-slate-800 font-bold text-xs sm:text-sm border border-pink-200 shadow-xs transition-all hover:scale-105 flex items-center gap-2">
+                            <i class="fa-solid fa-trophy text-amber-500"></i> View Achievements
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- Hero Profile Card Right -->
+                <div class="lg:col-span-5 flex justify-center reveal-item">
+                    <div class="relative w-full max-w-sm">
+                        
+                        <!-- Glowing Backdrop Badge -->
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-pink-400 via-rose-400 to-pink-300 rounded-3xl blur-xl opacity-60 animate-pulse"></div>
+
+                        <!-- Card Content -->
+                        <div class="relative glass-card rounded-3xl p-6 text-center space-y-5">
+                            
+                            <!-- Profile Avatar Wrapper -->
+                            <div class="relative w-36 h-36 mx-auto rounded-2xl overflow-hidden shadow-xl ring-4 ring-white">
+                                <img src="https://placehold.co/400x400/ffe4e6/be123c?text=Nazhifa+Filza" 
+                                     alt="Nazhifa Filza Darayanicha" 
+                                     class="w-full h-full object-cover">
+                            </div>
+
+                            <div>
+                                <h2 class="text-xl font-extrabold text-slate-900">Nazhifa Filza D.</h2>
+                                <p class="text-xs font-semibold text-rose-600 mt-0.5">S1 English Education (2024 - Present)</p>
+                                <p class="text-[11px] text-slate-600 mt-1">Universitas Negeri Malang (UM)</p>
+                            </div>
+
+                            <!-- Stat Counter Badges -->
+                            <div class="grid grid-cols-3 gap-2 pt-2 border-t border-pink-100">
+                                <div class="p-2 rounded-xl bg-pink-50/60 text-center">
+                                    <span class="block text-lg font-extrabold text-slate-900">50+</span>
+                                    <span class="text-[10px] font-bold text-slate-600 uppercase">Articles</span>
+                                </div>
+                                <div class="p-2 rounded-xl bg-pink-50/60 text-center">
+                                    <span class="block text-lg font-extrabold text-rose-600">1st</span>
+                                    <span class="text-[10px] font-bold text-slate-600 uppercase">Gold Medal</span>
+                                </div>
+                                <div class="p-2 rounded-xl bg-pink-50/60 text-center">
+                                    <span class="block text-lg font-extrabold text-slate-900">15+</span>
+                                    <span class="text-[10px] font-bold text-slate-600 uppercase">Honors/Certs</span>
+                                </div>
+                            </div>
+
+                            <!-- Verified Badge -->
+                            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-[11px] font-bold">
+                                <i class="fa-solid fa-circle-check text-emerald-500"></i> Google Gemini AI Certified
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="relative z-10 py-16 bg-gradient-to-b from-transparent via-pink-50/40 to-transparent">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-12 reveal-item">
+                <span class="text-xs font-extrabold text-rose-600 uppercase tracking-widest bg-pink-100/80 px-3 py-1 rounded-full border border-pink-200">
+                    Profile Summary
+                </span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-3">Combining Journalism, Literature & Education</h2>
+            </div>
+
+            <!-- About Grid Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Card 1 -->
+                <div class="glass-card rounded-3xl p-7 space-y-4 reveal-item">
+                    <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center text-xl font-bold shadow-xs">
+                        <i class="fa-solid fa-newspaper"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Journalism & Media</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        Experienced Journalism Intern at Public Relations UM. Conducted high-profile interviews with university leaders, professors, and external partners, publishing 50+ official news articles.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card rounded-3xl p-7 space-y-4 reveal-item">
+                    <div class="w-12 h-12 rounded-2xl bg-pink-100 text-pink-600 flex items-center justify-center text-xl font-bold shadow-xs">
+                        <i class="fa-solid fa-pen-nib"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Creative Literature</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        National award-winning author. Winner of Gold Medal at UNNES English Flash Fiction Contest 2026 and 2nd Place National Feature Writer at LKJTN Kenal Bahana 2026.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card rounded-3xl p-7 space-y-4 reveal-item">
+                    <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center text-xl font-bold shadow-xs">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Edukasi & Service</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        Private English Tutor at Tentor Malang and volunteer youth educator at Laskar Belajar. Proven organizer through KKN Secretary duties and committee safety leadership.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION WITH FILTER TABS -->
+    <section id="experience" class="relative z-10 py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-10 reveal-item">
+                <span class="text-xs font-extrabold text-rose-600 uppercase tracking-widest bg-pink-100/80 px-3 py-1 rounded-full border border-pink-200">
+                    Career & Involvement
+                </span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-3">Professional Experience & Leadership</h2>
+            </div>
+
+            <!-- Filter Category Buttons -->
+            <div class="flex justify-center flex-wrap gap-2 mb-10 reveal-item">
+                <button onclick="filterExperience('all')" id="exp-btn-all" class="exp-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-900 text-white shadow-xs">
+                    All Roles
+                </button>
+                <button onclick="filterExperience('journalism')" id="exp-btn-journalism" class="exp-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 text-slate-600 hover:bg-rose-50 hover:text-rose-600">
+                    Journalism & Media
+                </button>
+                <button onclick="filterExperience('freelance')" id="exp-btn-freelance" class="exp-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 text-slate-600 hover:bg-rose-50 hover:text-rose-600">
+                    Freelance & Writing
+                </button>
+                <button onclick="filterExperience('education')" id="exp-btn-education" class="exp-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 text-slate-600 hover:bg-rose-50 hover:text-rose-600">
+                    Education & Tutoring
+                </button>
+                <button onclick="filterExperience('committee')" id="exp-btn-committee" class="exp-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 text-slate-600 hover:bg-rose-50 hover:text-rose-600">
+                    Committee & Service
+                </button>
+            </div>
+
+            <!-- Experience Cards Container -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="exp-cards-container">
+                
+                <!-- Exp Item 1: Humas UM -->
+                <div class="exp-card glass-card rounded-2xl p-6 relative border-l-4 border-l-rose-500 reveal-item" data-category="journalism">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <span class="text-xs font-bold text-rose-600 uppercase tracking-wider">Universitas Negeri Malang</span>
+                            <h3 class="text-lg font-bold text-slate-900">Journalism Intern – Humas UM</h3>
+                        </div>
+                        <span class="text-[11px] font-bold text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">Feb 2026 – Present</span>
+                    </div>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside mb-4">
+                        <li>Conducted news coverage and live interviews with university leaders, professors, students, and institutional partners.</li>
+                        <li>Researched, authored, and edited over <strong>50 official news articles</strong> in nine months for Humas UM publications.</li>
+                        <li>Honed skills in news writing, interviewing, research, communication, and strategic institutional storytelling.</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-100">
+                        <span class="text-[10px] bg-rose-50 text-rose-700 font-semibold px-2.5 py-0.5 rounded-lg border border-rose-200">News Writing</span>
+                        <span class="text-[10px] bg-slate-100 text-slate-700 font-semibold px-2.5 py-0.5 rounded-lg">Interviews</span>
+                        <span class="text-[10px] bg-slate-100 text-slate-700 font-semibold px-2.5 py-0.5 rounded-lg">Media Relations</span>
+                    </div>
+                </div>
+
+                <!-- Exp Item 2: Freelance Writer -->
+                <div class="exp-card glass-card rounded-2xl p-6 relative border-l-4 border-l-pink-500 reveal-item" data-category="freelance">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <span class="text-xs font-bold text-pink-600 uppercase tracking-wider">Fiverr, Kompasiana, Medium</span>
+                            <h3 class="text-lg font-bold text-slate-900">Freelance & Digital Blog Writer</h3>
+                        </div>
+                        <span class="text-[11px] font-bold text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">Jan 2026 – Present</span>
+                    </div>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside mb-4">
+                        <li>Delivered customized creative and essay writing services for digital platforms adhering strictly to client briefs and deadlines.</li>
+                        <li>Authored independent opinion pieces, analytical essays, and narrative blogs on Kompasiana & Medium.</li>
+                        <li>Developed digital storytelling techniques to convey complex ideas engagingly to diverse online audiences.</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-100">
+                        <span class="text-[10px] bg-pink-50 text-pink-700 font-semibold px-2.5 py-0.5 rounded-lg border border-pink-200">SEO Writing</span>
+                        <span class="text-[10px] bg-slate-100 text-slate-700 font-semibold px-2.5 py-0.5 rounded-lg">Digital Content</span>
+                        <span class="text-[10px] bg-slate-100 text-slate-700 font-semibold px-2.5 py-0.5 rounded-lg">Blogging</span>
+                    </div>
+                </div>
+
+                <!-- Exp Item 3: UKMP & LPM Siar -->
+                <div class="exp-card glass-card rounded-2xl p-6 relative border-l-4 border-l-amber-500 reveal-item" data-category="journalism">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Student Activity Unit</span>
+                            <h3 class="text-lg font-bold text-slate-900">UKM Penulis & LPM Siar Member</h3>
+                        </div>
+                        <span class="text-[11px] font-bold text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">Jan 2025 – Jan 2026</span>
+                    </div>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside mb-4">
+                        <li>Actively engaged in campus journalistic coverage and literary writing projects.</li>
+                        <li>Contributed writing and editorial assistance in an official book publication project as a key output.</li>
+                        <li>Completed Diklat Jurnalistik & Pelatihan Kepenulisan Tingkat Dasar (DJ&PKMTD XLIV).</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-100">
+                        <span class="text-[10px] bg-amber-50 text-amber-700 font-semibold px-2.5 py-0.5 rounded-lg border border-amber-200">Book Publishing</span>
+                        <span class="text-[10px] bg-slate-100 text-slate-700 font-semibold px-2.5 py-0.5 rounded-lg">Press Student</span>
+                    </div>
+                </div>
+
+                <!-- Exp Item 4: Private English Tutor -->
+                <div class="exp-card glass-card rounded-2xl p-6 relative border-l-4 border-l-emerald-500 reveal-item" data-category="education">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Tentor Malang</span>
+                            <h3 class="text-lg font-bold text-slate-900">Private English Tutor</h3>
+                        </div>
+                        <span class="text-[11px] font-bold text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">Aug 2026 – Present</span>
+                    </div>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside mb-4">
+                        <li>Provides personalized home English instruction creating an encouraging and comfortable learning environment.</li>
+                        <li>Facilitates interactive language sessions utilizing tailored educational media, grammar drills, and conversational practice.</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-100">
+                        <span class="text-[10px] bg-emerald-50 text-emerald-700 font-semibold px-2.5 py-0.5 rounded-lg border border-emerald-200">ELT Pedagogy</span>
+                        <span class="text-[10px] bg-slate-100 text-slate-700 font-semibold px-2.5 py-0.5 rounded-lg">1-on-1 Tutoring</span>
+                    </div>
+                </div>
+
+                <!-- Exp Item 5: KKN Secretary -->
+                <div class="exp-card glass-card rounded-2xl p-6 relative border-l-4 border-l-blue-500 reveal-item" data-category="education">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Community Service Program</span>
+                            <h3 class="text-lg font-bold text-slate-900">Secretary of KKN Program</h3>
+                        </div>
+                        <span class="text-[11px] font-bold text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">Jun 2026 – Aug 2026</span>
+                    </div>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside mb-4">
+                        <li>Drafted, cataloged, and managed over <strong>20 official administrative letters</strong> in less than two months.</li>
+                        <li>Organized project schedules and coordinated directly with village officials to ensure smooth program execution.</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-100">
+                        <span class="text-[10px] bg-blue-50 text-blue-700 font-semibold px-2.5 py-0.5 rounded-lg border border-blue-200">Administration</span>
+                        <span class="text-[10px] bg-slate-100 text-slate-700 font-semibold px-2.5 py-0.5 rounded-lg">Village Relations</span>
+                    </div>
+                </div>
+
+                <!-- Exp Item 6: Community Laskar Belajar -->
+                <div class="exp-card glass-card rounded-2xl p-6 relative border-l-4 border-l-purple-500 reveal-item" data-category="education">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <span class="text-xs font-bold text-purple-600 uppercase tracking-wider">Community Laskar Belajar</span>
+                            <h3 class="text-lg font-bold text-slate-900">Volunteer Youth Educator</h3>
+                        </div>
+                        <span class="text-[11px] font-bold text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">Dec 2024 – Dec 2025</span>
+                    </div>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside mb-4">
+                        <li>Contributed as an educator providing academic mentorship and literacy workshops to children and youth in Malang.</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-100">
+                        <span class="text-[10px] bg-purple-50 text-purple-700 font-semibold px-2.5 py-0.5 rounded-lg border border-purple-200">Social Service</span>
+                        <span class="text-[10px] bg-slate-100 text-slate-700 font-semibold px-2.5 py-0.5 rounded-lg">Mentorship</span>
+                    </div>
+                </div>
+
+                <!-- Exp Item 7: BUBAR LASBER Committee -->
+                <div class="exp-card glass-card rounded-2xl p-6 relative border-l-4 border-l-pink-500 reveal-item" data-category="committee">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <span class="text-xs font-bold text-pink-600 uppercase tracking-wider">Laskar Belajar Malang</span>
+                            <h3 class="text-lg font-bold text-slate-900">Organizing Committee – BUBAR LASBER 2025</h3>
+                        </div>
+                        <span class="text-[11px] font-bold text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">Mar 23, 2025</span>
+                    </div>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside mb-4">
+                        <li>Served as official event organizing committee member for <em>Buka Akbar Laskar Belajar 2025</em> in Malang.</li>
+                        <li>Coordinated logistics and social gathering for youth learning beneficiaries.</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-100">
+                        <span class="text-[10px] bg-pink-50 text-pink-700 font-semibold px-2.5 py-0.5 rounded-lg border border-pink-200">Committee</span>
+                        <span class="text-[10px] bg-slate-100 text-slate-700 font-semibold px-2.5 py-0.5 rounded-lg">Community Event</span>
+                    </div>
+                </div>
+
+                <!-- Exp Item 8: EDAC 71st Security -->
+                <div class="exp-card glass-card rounded-2xl p-6 relative border-l-4 border-l-rose-500 reveal-item" data-category="committee">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <span class="text-xs font-bold text-rose-600 uppercase tracking-wider">English Dept, UM</span>
+                            <h3 class="text-lg font-bold text-slate-900">Security Division Member – 71st EDAC 2025</h3>
+                        </div>
+                        <span class="text-[11px] font-bold text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">Oct 11, 2025</span>
+                    </div>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside mb-4">
+                        <li>Managed venue security and crowd control during the 71st English Department Art & Collaboration.</li>
+                        <li>Certificate No: 13.10.27/UN32.2.1/KM/2025.</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-100">
+                        <span class="text-[10px] bg-rose-50 text-rose-700 font-semibold px-2.5 py-0.5 rounded-lg border border-rose-200">Security & Safety</span>
+                        <span class="text-[10px] bg-slate-100 text-slate-700 font-semibold px-2.5 py-0.5 rounded-lg">Logistics</span>
+                    </div>
+                </div>
+
+                <!-- Exp Item 9: Abdi Bakti Sastra 2025 -->
+                <div class="exp-card glass-card rounded-2xl p-6 relative border-l-4 border-l-indigo-500 reveal-item" data-category="committee">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider">Faculty of Letters, UM</span>
+                            <h3 class="text-lg font-bold text-slate-900">Security Committee – Abdi Bakti Sastra 2025</h3>
+                        </div>
+                        <span class="text-[11px] font-bold text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">2025</span>
+                    </div>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside mb-4">
+                        <li>Served as security committee member ensuring safety protocols during Abdi Bakti Sastra 2025.</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-100">
+                        <span class="text-[10px] bg-indigo-50 text-indigo-700 font-semibold px-2.5 py-0.5 rounded-lg border border-indigo-200">Security</span>
+                        <span class="text-[10px] bg-slate-100 text-slate-700 font-semibold px-2.5 py-0.5 rounded-lg">Campus Service</span>
+                    </div>
+                </div>
+
+                <!-- Exp Item 10: ALJABAR Documentation & Decoration -->
+                <div class="exp-card glass-card rounded-2xl p-6 relative border-l-4 border-l-teal-500 reveal-item" data-category="committee">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <span class="text-xs font-bold text-teal-600 uppercase tracking-wider">ALJABAR Community Service</span>
+                            <h3 class="text-lg font-bold text-slate-900">Documentation & Decoration Division</h3>
+                        </div>
+                        <span class="text-[11px] font-bold text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">Service Outreach</span>
+                    </div>
+                    <ul class="text-sm text-slate-600 space-y-2 list-disc list-inside mb-4">
+                        <li>Handled photography documentation and aesthetic venue decorations for ALJABAR program.</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-100">
+                        <span class="text-[10px] bg-teal-50 text-teal-700 font-semibold px-2.5 py-0.5 rounded-lg border border-teal-200">Documentation</span>
+                        <span class="text-[10px] bg-slate-100 text-slate-700 font-semibold px-2.5 py-0.5 rounded-lg">Decoration</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- WRITINGS PORTFOLIO SECTION (WITH IN-PAGE READING MODAL) -->
+    <section id="writings" class="relative z-10 py-20 bg-gradient-to-b from-transparent via-pink-50/50 to-transparent">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-12 reveal-item">
+                <span class="text-xs font-extrabold text-rose-600 uppercase tracking-widest bg-pink-100/80 px-3 py-1 rounded-full border border-pink-200">
+                    Portfolio Highlights
+                </span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-3">Selected Writings & Articles</h2>
+                <p class="text-xs sm:text-sm text-slate-600 mt-2">Click on any piece below to read excerpts directly on this page.</p>
+            </div>
+
+            <!-- Writing Samples Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Sample 1 -->
+                <div onclick="openWritingModal(0)" class="glass-card rounded-3xl p-6 cursor-pointer group hover:scale-[1.02] transition-all flex flex-col justify-between reveal-item">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full text-[10px] font-extrabold bg-rose-100 text-rose-700 uppercase">Feature Writing</span>
+                            <span class="text-xs text-slate-600"><i class="fa-solid fa-trophy text-amber-500"></i> Juara 2 LKJTN</span>
+                        </div>
+                        <h3 class="font-extrabold text-slate-900 text-lg group-hover:text-rose-600 transition-colors leading-snug mb-2">
+                            "Telisik Ruang Aman di Tengah Ancaman"
+                        </h3>
+                        <p class="text-xs text-slate-600 line-clamp-3 leading-relaxed mb-4">
+                            Award-winning journalistic feature story exploring public safe spaces and institutional protection mechanisms for women.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-rose-600">
+                        <span>Read Full Excerpt</span>
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Sample 2 -->
+                <div onclick="openWritingModal(1)" class="glass-card rounded-3xl p-6 cursor-pointer group hover:scale-[1.02] transition-all flex flex-col justify-between reveal-item">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full text-[10px] font-extrabold bg-amber-100 text-amber-800 uppercase">Flash Fiction</span>
+                            <span class="text-xs text-slate-600"><i class="fa-solid fa-medal text-amber-500"></i> Gold Medal UNNES</span>
+                        </div>
+                        <h3 class="font-extrabold text-slate-900 text-lg group-hover:text-rose-600 transition-colors leading-snug mb-2">
+                            "Whispers Across the Horizon"
+                        </h3>
+                        <p class="text-xs text-slate-600 line-clamp-3 leading-relaxed mb-4">
+                            Gold Medal entry in the English Flash Fiction Contest 2026. A poignant story exploring memory, connection, and resilience.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-rose-600">
+                        <span>Read Full Story</span>
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Sample 3 -->
+                <div onclick="openWritingModal(2)" class="glass-card rounded-3xl p-6 cursor-pointer group hover:scale-[1.02] transition-all flex flex-col justify-between reveal-item">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full text-[10px] font-extrabold bg-blue-100 text-blue-700 uppercase">News Reporting</span>
+                            <span class="text-xs text-slate-600">Humas UM &bull; 50+ Articles</span>
+                        </div>
+                        <h3 class="font-extrabold text-slate-900 text-lg group-hover:text-rose-600 transition-colors leading-snug mb-2">
+                            Institutional Coverage & Leaders Interview
+                        </h3>
+                        <p class="text-xs text-slate-600 line-clamp-3 leading-relaxed mb-4">
+                            Selected coverage pieces from 50+ published news reports on university innovations, academic partnerships, and campus leadership.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-rose-600">
+                        <span>Read Sample Coverage</span>
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- AWARDS & CERTIFICATIONS SECTION (WITH INSPECTOR LIGHTBOX MODAL) -->
+    <section id="awards" class="relative z-10 py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-10 reveal-item">
+                <span class="text-xs font-extrabold text-rose-600 uppercase tracking-widest bg-pink-100/80 px-3 py-1 rounded-full border border-pink-200">
+                    Recognitions
+                </span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-3">Honors, Awards & Certifications</h2>
+            </div>
+
+            <!-- Award Category Filter Buttons -->
+            <div class="flex justify-center flex-wrap gap-2 mb-10 reveal-item">
+                <button onclick="filterAwards('all')" id="award-btn-all" class="award-filter-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-900 text-white shadow-xs">
+                    All Honors (15)
+                </button>
+                <button onclick="filterAwards('writing')" id="award-btn-writing" class="award-filter-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 text-slate-600 hover:bg-rose-50 hover:text-rose-600">
+                    Writing & Journalism
+                </button>
+                <button onclick="filterAwards('design')" id="award-btn-design" class="award-filter-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 text-slate-600 hover:bg-rose-50 hover:text-rose-600">
+                    Poster Design
+                </button>
+                <button onclick="filterAwards('certification')" id="award-btn-certification" class="award-filter-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 text-slate-600 hover:bg-rose-50 hover:text-rose-600">
+                    Certifications & Guest Lectures
+                </button>
+                <button onclick="filterAwards('committee')" id="award-btn-committee" class="award-filter-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 text-slate-600 hover:bg-rose-50 hover:text-rose-600">
+                    Committee & Service
+                </button>
+            </div>
+
+            <!-- Award Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="awards-container">
+                
+                <!-- Award 1: Gold Medal UNNES -->
+                <div onclick="openAwardModal(0)" class="award-card glass-card rounded-2xl p-5 cursor-pointer group flex flex-col justify-between reveal-item" data-category="writing">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-9 h-9 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-base shadow-xs group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-white transition-all">
+                                <i class="fa-solid fa-medal"></i>
+                            </span>
+                            <span class="text-[10px] font-extrabold bg-amber-50 text-amber-700 px-2.5 py-1 rounded-full border border-amber-200">GOLD MEDAL</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm group-hover:text-rose-600 transition-colors mb-1">
+                            Pemenang Medali Emas – English Flash Fiction Contest
+                        </h3>
+                        <p class="text-xs text-slate-500 mb-3">FBS Universitas Negeri Semarang (UNNES) &bull; 2026</p>
+                        <p class="text-xs text-slate-600 line-clamp-2">
+                            National literary competition award with score 80-100 signed by PLH Dekan FBS UNNES.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-rose-600">
+                        <span>Inspect Certificate</span>
+                        <i class="fa-solid fa-expand text-[10px] group-hover:rotate-45 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Award 2: Juara 1 Poster UNAIR -->
+                <div onclick="openAwardModal(1)" class="award-card glass-card rounded-2xl p-5 cursor-pointer group flex flex-col justify-between reveal-item" data-category="design">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-9 h-9 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-base shadow-xs group-hover:scale-110 group-hover:bg-rose-500 group-hover:text-white transition-all">
+                                <i class="fa-solid fa-trophy"></i>
+                            </span>
+                            <span class="text-[10px] font-extrabold bg-rose-50 text-rose-700 px-2.5 py-1 rounded-full border border-rose-200">JUARA 1</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm group-hover:text-rose-600 transition-colors mb-1">
+                            Juara 1 Lomba Poster Muslimah Inspire Series
+                        </h3>
+                        <p class="text-xs text-slate-500 mb-3">UKM-KI Universitas Airlangga &bull; 2026</p>
+                        <p class="text-xs text-slate-600 line-clamp-2">
+                            First place winner themed "Islam Solusi Ruang Aman bagi Perempuan" with 120 SKP recognition.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-rose-600">
+                        <span>Inspect Certificate</span>
+                        <i class="fa-solid fa-expand text-[10px] group-hover:rotate-45 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Award 3: Juara 2 Feature UNRI -->
+                <div onclick="openAwardModal(2)" class="award-card glass-card rounded-2xl p-5 cursor-pointer group flex flex-col justify-between reveal-item" data-category="writing">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-9 h-9 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-base shadow-xs group-hover:scale-110 group-hover:bg-slate-800 group-hover:text-white transition-all">
+                                <i class="fa-solid fa-award"></i>
+                            </span>
+                            <span class="text-[10px] font-extrabold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-full border border-slate-200">JUARA 2</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm group-hover:text-rose-600 transition-colors mb-1">
+                            Juara 2 Lomba Feature LKJTN Kenal Bahana
+                        </h3>
+                        <p class="text-xs text-slate-500 mb-3">LPM Bahana Mahasiswa UNRI &bull; 2026</p>
+                        <p class="text-xs text-slate-600 line-clamp-2">
+                            National journalistic feature competition themed "Telisik Ruang Aman di Tengah Ancaman".
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-rose-600">
+                        <span>Inspect Certificate</span>
+                        <i class="fa-solid fa-expand text-[10px] group-hover:rotate-45 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Award 4: Google Gemini Certification -->
+                <div onclick="openAwardModal(3)" class="award-card glass-card rounded-2xl p-5 cursor-pointer group flex flex-col justify-between reveal-item" data-category="certification">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-9 h-9 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-base shadow-xs group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                                <i class="fa-brands fa-google"></i>
+                            </span>
+                            <span class="text-[10px] font-extrabold bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full border border-blue-200">2026 – 2029</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm group-hover:text-rose-600 transition-colors mb-1">
+                            Siswa Tersertifikasi Gemini (Universitas)
+                        </h3>
+                        <p class="text-xs text-slate-500 mb-3">Google for Education &bull; Certified AI Skills</p>
+                        <p class="text-xs text-slate-600 line-clamp-2">
+                            Official certification for proficiency and foundational competence in applying Google AI tools in academic environments.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-rose-600">
+                        <span>Inspect Credential</span>
+                        <i class="fa-solid fa-expand text-[10px] group-hover:rotate-45 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Award 5: Juara 3 Majalah Komunikasi -->
+                <div onclick="openAwardModal(4)" class="award-card glass-card rounded-2xl p-5 cursor-pointer group flex flex-col justify-between reveal-item" data-category="writing">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-base shadow-xs group-hover:scale-110 group-hover:bg-amber-600 group-hover:text-white transition-all">
+                                <i class="fa-solid fa-pen"></i>
+                            </span>
+                            <span class="text-[10px] font-extrabold bg-amber-50 text-amber-800 px-2.5 py-1 rounded-full border border-amber-200">JUARA 3</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm group-hover:text-rose-600 transition-colors mb-1">
+                            Juara III Lomba Menulis Cerpen 2026
+                        </h3>
+                        <p class="text-xs text-slate-500 mb-3">Majalah Komunikasi UM &bull; 2026</p>
+                        <p class="text-xs text-slate-600 line-clamp-2">
+                            Third place award in creative short story competition organized by Majalah Komunikasi UM.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-rose-600">
+                        <span>Inspect Certificate</span>
+                        <i class="fa-solid fa-expand text-[10px] group-hover:rotate-45 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Award 6: Top 10 Malam Sastra -->
+                <div onclick="openAwardModal(5)" class="award-card glass-card rounded-2xl p-5 cursor-pointer group flex flex-col justify-between reveal-item" data-category="writing">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-9 h-9 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-base shadow-xs group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition-all">
+                                <i class="fa-solid fa-star"></i>
+                            </span>
+                            <span class="text-[10px] font-extrabold bg-purple-50 text-purple-700 px-2.5 py-1 rounded-full border border-purple-200">TOP 10 FINALIST</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm group-hover:text-rose-600 transition-colors mb-1">
+                            Top 10 Finalis Sayembara Cerpen Malam Sastra
+                        </h3>
+                        <p class="text-xs text-slate-500 mb-3">LPM Perspektif FISIP &bull; 2026</p>
+                        <p class="text-xs text-slate-600 line-clamp-2">
+                            Ranked 9th nationally among literary entries in Sayembara Cerpen Malam Sastra.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-rose-600">
+                        <span>Inspect Certificate</span>
+                        <i class="fa-solid fa-expand text-[10px] group-hover:rotate-45 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Award 7: Juara 2 Poster EDAC -->
+                <div onclick="openAwardModal(6)" class="award-card glass-card rounded-2xl p-5 cursor-pointer group flex flex-col justify-between reveal-item" data-category="design">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-9 h-9 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-base shadow-xs group-hover:scale-110 group-hover:bg-rose-500 group-hover:text-white transition-all">
+                                <i class="fa-solid fa-palette"></i>
+                            </span>
+                            <span class="text-[10px] font-extrabold bg-rose-50 text-rose-700 px-2.5 py-1 rounded-full border border-rose-200">JUARA 2</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm group-hover:text-rose-600 transition-colors mb-1">
+                            Juara II Lomba Poster EDAC ke-70
+                        </h3>
+                        <p class="text-xs text-slate-500 mb-3">English Department Art & Collaboration &bull; 2024</p>
+                        <p class="text-xs text-slate-600 line-clamp-2">
+                            Second place recognition in creative poster artwork competition during 70th EDAC.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-rose-600">
+                        <span>Inspect Certificate</span>
+                        <i class="fa-solid fa-expand text-[10px] group-hover:rotate-45 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Award 8: iNELTAL Guest Lecture -->
+                <div onclick="openAwardModal(7)" class="award-card glass-card rounded-2xl p-5 cursor-pointer group flex flex-col justify-between reveal-item" data-category="certification">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-base shadow-xs group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white transition-all">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </span>
+                            <span class="text-[10px] font-extrabold bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">iNELTAL 2026</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm group-hover:text-rose-600 transition-colors mb-1">
+                            iNELTAL Pre-Conference Guest Lecture
+                        </h3>
+                        <p class="text-xs text-slate-500 mb-3">Universitas Negeri Malang &bull; Sept 17, 2026</p>
+                        <p class="text-xs text-slate-600 line-clamp-2">
+                            International Conference on English Language Teaching and Applied Linguistics.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-rose-600">
+                        <span>Inspect Certificate</span>
+                        <i class="fa-solid fa-expand text-[10px] group-hover:rotate-45 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Award 9: Guest Lecture UM -->
+                <div onclick="openAwardModal(8)" class="award-card glass-card rounded-2xl p-5 cursor-pointer group flex flex-col justify-between reveal-item" data-category="certification">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-9 h-9 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center text-base shadow-xs group-hover:scale-110 group-hover:bg-sky-600 group-hover:text-white transition-all">
+                                <i class="fa-solid fa-book-bookmark"></i>
+                            </span>
+                            <span class="text-[10px] font-extrabold bg-sky-50 text-sky-700 px-2.5 py-1 rounded-full border border-sky-200">GUEST LECTURE</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm group-hover:text-rose-600 transition-colors mb-1">
+                            Guest Lecture: "Beyond the Classroom Task"
+                        </h3>
+                        <p class="text-xs text-slate-500 mb-3">Dept. of English, UM &bull; Oct 26, 2026</p>
+                        <p class="text-xs text-slate-600 line-clamp-2">
+                            Designing Meaningful Projects for English Language Learning.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-rose-600">
+                        <span>Inspect Certificate</span>
+                        <i class="fa-solid fa-expand text-[10px] group-hover:rotate-45 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Award 10: Copywriting Harisenin -->
+                <div onclick="openAwardModal(9)" class="award-card glass-card rounded-2xl p-5 cursor-pointer group flex flex-col justify-between reveal-item" data-category="certification">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-9 h-9 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-base shadow-xs group-hover:scale-110 group-hover:bg-rose-600 group-hover:text-white transition-all">
+                                <i class="fa-solid fa-bullhorn"></i>
+                            </span>
+                            <span class="text-[10px] font-extrabold bg-rose-50 text-rose-700 px-2.5 py-1 rounded-full border border-rose-200">COPYWRITING</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm group-hover:text-rose-600 transition-colors mb-1">
+                            Intensive Copywriting Training
+                        </h3>
+                        <p class="text-xs text-slate-500 mb-3">Harisenin.com &bull; Certified</p>
+                        <p class="text-xs text-slate-600 line-clamp-2">
+                            Intensive training covering conversion copywriting, target audience mapping, and persuasive strategy.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-rose-600">
+                        <span>Inspect Certification</span>
+                        <i class="fa-solid fa-expand text-[10px] group-hover:rotate-45 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Award 11: SKKNI Afaq Academy -->
+                <div onclick="openAwardModal(10)" class="award-card glass-card rounded-2xl p-5 cursor-pointer group flex flex-col justify-between reveal-item" data-category="certification">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-9 h-9 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-base shadow-xs group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition-all">
+                                <i class="fa-solid fa-user-gear"></i>
+                            </span>
+                            <span class="text-[10px] font-extrabold bg-purple-50 text-purple-700 px-2.5 py-1 rounded-full border border-purple-200">SKKNI NO. 149/2020</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm group-hover:text-rose-600 transition-colors mb-1">
+                            Human Resources Development Training
+                        </h3>
+                        <p class="text-xs text-slate-500 mb-3">Afaq Academy &bull; National HR Standard</p>
+                        <p class="text-xs text-slate-600 line-clamp-2">
+                            Trained in HR competency standards (SKKNI No. 149/2020), talent management, and development.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-rose-600">
+                        <span>Inspect Certification</span>
+                        <i class="fa-solid fa-expand text-[10px] group-hover:rotate-45 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Award 12: BUBAR LASBER 2025 -->
+                <div onclick="openAwardModal(11)" class="award-card glass-card rounded-2xl p-5 cursor-pointer group flex flex-col justify-between reveal-item" data-category="committee">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-9 h-9 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center text-base shadow-xs group-hover:scale-110 group-hover:bg-pink-600 group-hover:text-white transition-all">
+                                <i class="fa-solid fa-hand-holding-heart"></i>
+                            </span>
+                            <span class="text-[10px] font-extrabold bg-pink-50 text-pink-700 px-2.5 py-1 rounded-full border border-pink-200">BUBAR LASBER 2025</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm group-hover:text-rose-600 transition-colors mb-1">
+                            Organizing Committee Certificate (Panitia)
+                        </h3>
+                        <p class="text-xs text-slate-500 mb-3">Komunitas Laskar Belajar Kota Malang &bull; Mar 23, 2025</p>
+                        <p class="text-xs text-slate-600 line-clamp-2">
+                            Official certificate of appreciation for event organizing committee duties during Buka Akbar Laskar Belajar 2025.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-rose-600">
+                        <span>Inspect Certificate</span>
+                        <i class="fa-solid fa-expand text-[10px] group-hover:rotate-45 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Award 13: 71st EDAC Security -->
+                <div onclick="openAwardModal(12)" class="award-card glass-card rounded-2xl p-5 cursor-pointer group flex flex-col justify-between reveal-item" data-category="committee">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-9 h-9 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-base shadow-xs group-hover:scale-110 group-hover:bg-rose-600 group-hover:text-white transition-all">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </span>
+                            <span class="text-[10px] font-extrabold bg-rose-50 text-rose-700 px-2.5 py-1 rounded-full border border-rose-200">71st EDAC 2025</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm group-hover:text-rose-600 transition-colors mb-1">
+                            Member of Security Division Certificate
+                        </h3>
+                        <p class="text-xs text-slate-500 mb-3">English Department, UM &bull; Oct 11, 2025</p>
+                        <p class="text-xs text-slate-600 line-clamp-2">
+                            Recognition for active participation in the Security Division (Cert No. 13.10.27/UN32.2.1/KM/2025).
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-rose-600">
+                        <span>Inspect Certificate</span>
+                        <i class="fa-solid fa-expand text-[10px] group-hover:rotate-45 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Award 14: Abdi Bakti Sastra -->
+                <div onclick="openAwardModal(13)" class="award-card glass-card rounded-2xl p-5 cursor-pointer group flex flex-col justify-between reveal-item" data-category="committee">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-9 h-9 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-base shadow-xs group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                                <i class="fa-solid fa-user-shield"></i>
+                            </span>
+                            <span class="text-[10px] font-extrabold bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-full border border-indigo-200">ABDI BAKTI SASTRA</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm group-hover:text-rose-600 transition-colors mb-1">
+                            Panitia Keamanan – Abdi Bakti Sastra 2025
+                        </h3>
+                        <p class="text-xs text-slate-500 mb-3">Faculty of Letters, UM &bull; 2025</p>
+                        <p class="text-xs text-slate-600 line-clamp-2">
+                            Security division committee member managing venue safety during campus community service.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-rose-600">
+                        <span>Inspect Certificate</span>
+                        <i class="fa-solid fa-expand text-[10px] group-hover:rotate-45 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Award 15: ALJABAR Documentation -->
+                <div onclick="openAwardModal(14)" class="award-card glass-card rounded-2xl p-5 cursor-pointer group flex flex-col justify-between reveal-item" data-category="committee">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="w-9 h-9 rounded-xl bg-teal-100 text-teal-600 flex items-center justify-center text-base shadow-xs group-hover:scale-110 group-hover:bg-teal-600 group-hover:text-white transition-all">
+                                <i class="fa-solid fa-camera"></i>
+                            </span>
+                            <span class="text-[10px] font-extrabold bg-teal-50 text-teal-700 px-2.5 py-1 rounded-full border border-teal-200">ALJABAR PROGRAM</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-sm group-hover:text-rose-600 transition-colors mb-1">
+                            Divisi Dokumentasi dan Dekorasi – ALJABAR
+                        </h3>
+                        <p class="text-xs text-slate-500 mb-3">Aksi Layanan dan Pengabdian Masyarakat &bull; UM</p>
+                        <p class="text-xs text-slate-600 line-clamp-2">
+                            Responsible for visual photography documentation and event venue decoration during community service.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-rose-600">
+                        <span>Inspect Details</span>
+                        <i class="fa-solid fa-expand text-[10px] group-hover:rotate-45 transition-transform"></i>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="relative z-10 py-20 bg-gradient-to-b from-transparent to-pink-50/70">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            
+            <div class="glass-card rounded-3xl p-8 sm:p-12 space-y-6 reveal-item">
+                <div class="w-16 h-16 rounded-3xl bg-rose-100 text-rose-600 flex items-center justify-center text-2xl mx-auto shadow-sm">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </div>
+
+                <h2 class="text-3xl font-extrabold text-slate-900">Let's Collaborate & Connect</h2>
+                <p class="text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">
+                    Open for journalistic reporting opportunities, freelance copywriting, ELT instructional projects, creative literary commissions, and educational collaborations.
+                </p>
+
+                <div class="pt-4 flex flex-wrap justify-center gap-4 text-xs font-bold">
+                    <a href="mailto:nazhifadara6@gmail.com" class="px-6 py-3.5 rounded-2xl bg-rose-600 hover:bg-rose-700 text-white shadow-md shadow-pink-200 transition-all hover:scale-105 flex items-center gap-2">
+                        <i class="fa-solid fa-envelope"></i> Email Me
+                    </a>
+                    <a href="https://wa.me/6285895890763" target="_blank" class="px-6 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white shadow-md transition-all hover:scale-105 flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp Chat
+                    </a>
+                </div>
+
+                <!-- Footer Social Links -->
+                <div class="pt-8 border-t border-pink-100 flex justify-center gap-6 text-slate-500 text-lg">
+                    <a href="mailto:nazhifadara6@gmail.com" class="hover:text-rose-600 transition-colors" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://kompasiana.com" target="_blank" class="hover:text-rose-600 transition-colors" title="Kompasiana"><i class="fa-solid fa-pen-nib"></i></a>
+                    <a href="https://medium.com" target="_blank" class="hover:text-rose-600 transition-colors" title="Medium"><i class="fa-brands fa-medium"></i></a>
+                    <a href="https://fiverr.com" target="_blank" class="hover:text-rose-600 transition-colors" title="Fiverr"><i class="fa-solid fa-briefcase"></i></a>
+                </div>
+            </div>
+
+            <p class="text-xs text-slate-600 mt-8 font-medium">
+                &copy; 2026 Nazhifa Filza Darayanicha. All rights reserved. S1 English Education, Universitas Negeri Malang.
+            </p>
+        </div>
+    </section>
+
+    <!-- ================= IN-PAGE WRITING MODAL READER ================= -->
+    <div id="writing-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <!-- Backdrop -->
+        <div onclick="closeWritingModal()" class="modal-backdrop fixed inset-0 bg-slate-900/60 backdrop-blur-sm"></div>
+        
+        <!-- Modal Content Container -->
+        <div class="modal-content-box relative bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-pink-200 z-10 max-h-[85vh] overflow-y-auto my-auto">
+            
+            <button onclick="closeWritingModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-rose-100 hover:text-rose-600 transition-colors flex items-center justify-center text-base">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <span id="wm-category" class="inline-block px-3 py-1 rounded-full text-[10px] font-extrabold uppercase bg-rose-100 text-rose-700 mb-3">
+                Category
+            </span>
+
+            <h3 id="wm-title" class="text-2xl font-extrabold text-slate-900 leading-snug mb-2">
+                Title Here
+            </h3>
+
+            <p id="wm-meta" class="text-xs font-semibold text-rose-600 mb-6 border-b border-slate-100 pb-3">
+                Publisher &bull; Award Details
+            </p>
+
+            <div id="wm-body" class="text-sm text-slate-700 leading-relaxed space-y-4">
+                <!-- Content inserted via JS -->
+            </div>
+
+            <div class="mt-8 pt-4 border-t border-slate-100 flex justify-end">
+                <button onclick="closeWritingModal()" class="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-rose-600 text-white font-bold text-xs transition-colors">
+                    Close Reader
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= IN-PAGE AWARD INSPECTOR MODAL ================= -->
+    <div id="award-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <!-- Backdrop -->
+        <div onclick="closeAwardModal()" class="modal-backdrop fixed inset-0 bg-slate-900/60 backdrop-blur-sm"></div>
+        
+        <!-- Modal Content Container -->
+        <div class="modal-content-box relative bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-pink-200 z-10 max-h-[85vh] overflow-y-auto my-auto text-center">
+            
+            <button onclick="closeAwardModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-rose-100 hover:text-rose-600 transition-colors flex items-center justify-center text-base">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Top Award Badge Icon -->
+            <div id="am-icon-wrap" class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-2xl mx-auto mb-4 shadow-sm">
+                <i id="am-icon" class="fa-solid fa-award"></i>
+            </div>
+
+            <span id="am-badge" class="inline-block px-3 py-1 rounded-full text-[10px] font-extrabold uppercase bg-amber-100 text-amber-800 mb-2">
+                Badge
+            </span>
+
+            <h3 id="am-title" class="text-xl font-extrabold text-slate-900 leading-snug mb-2">
+                Award Title
+            </h3>
+
+            <p id="am-issuer" class="text-xs font-semibold text-rose-600 mb-4">
+                Issuer & Year
+            </p>
+
+            <div id="am-code" class="inline-block px-3 py-1 rounded-lg bg-slate-100 text-slate-600 text-[11px] font-mono mb-4 border border-slate-200">
+                Cert No: XXX
+            </div>
+
+            <p id="am-desc" class="text-xs text-slate-600 leading-relaxed text-left bg-pink-50/50 p-4 rounded-2xl border border-pink-100">
+                Detailed description...
+            </p>
+
+            <div class="mt-6 pt-4 border-t border-slate-100 flex justify-center">
+                <button onclick="closeAwardModal()" class="px-6 py-2.5 rounded-xl bg-slate-900 hover:bg-rose-600 text-white font-bold text-xs transition-colors">
+                    Close Inspector
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // 1. DYNAMIC TYPING EFFECT IN HERO
+        const typedPhrases = [
+            "English Education Student",
+            "Journalistic Reporter",
+            "Creative Storyteller",
+            "National Award Writer"
+        ];
+        let phraseIdx = 0;
+        let letterIdx = 0;
+        let isDeleting = false;
+        const typedTextEl = document.getElementById("typed-text");
+
+        function typeLoop() {
+            const currentPhrase = typedPhrases[phraseIdx];
+            
+            if (isDeleting) {
+                typedTextEl.textContent = currentPhrase.substring(0, letterIdx - 1);
+                letterIdx--;
+            } else {
+                typedTextEl.textContent = currentPhrase.substring(0, letterIdx + 1);
+                letterIdx++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && letterIdx === currentPhrase.length) {
+                typeSpeed = 1800;
+                isDeleting = true;
+            } else if (isDeleting && letterIdx === 0) {
+                isDeleting = false;
+                phraseIdx = (phraseIdx + 1) % typedPhrases.length;
+                typeSpeed = 400;
+            }
+
+            setTimeout(typeLoop, typeSpeed);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            typeLoop();
+            initScrollReveal();
+        });
+
+        // 2. MOBILE MENU TOGGLE
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // 3. SCROLL REVEAL OBSERVER
+        function initScrollReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal-item').forEach(el => observer.observe(el));
+        }
+
+        // 4. FILTER EXPERIENCE CARDS
+        function filterExperience(category) {
+            const cards = document.querySelectorAll('.exp-card');
+            const btns = document.querySelectorAll('.exp-tab-btn');
+
+            btns.forEach(btn => {
+                btn.classList.remove('bg-slate-900', 'text-white');
+                btn.classList.add('bg-slate-100', 'text-slate-600');
+            });
+
+            const activeBtn = document.getElementById(`exp-btn-${category}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-slate-100', 'text-slate-600');
+                activeBtn.classList.add('bg-slate-900', 'text-white');
+            }
+
+            cards.forEach(card => {
+                const cardCat = card.getAttribute('data-category');
+                if (category === 'all' || cardCat === category) {
+                    card.style.display = 'block';
+                    card.classList.add('revealed');
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // 5. FILTER AWARDS CARDS
+        function filterAwards(category) {
+            const cards = document.querySelectorAll('.award-card');
+            const btns = document.querySelectorAll('.award-filter-btn');
+
+            btns.forEach(btn => {
+                btn.classList.remove('bg-slate-900', 'text-white');
+                btn.classList.add('bg-slate-100', 'text-slate-600');
+            });
+
+            const activeBtn = document.getElementById(`award-btn-${category}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-slate-100', 'text-slate-600');
+                activeBtn.classList.add('bg-slate-900', 'text-white');
+            }
+
+            cards.forEach(card => {
+                const cardCat = card.getAttribute('data-category');
+                if (category === 'all' || cardCat === category) {
+                    card.style.display = 'flex';
+                    card.classList.add('revealed');
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // 6. WRITING MODAL DATA & FUNCTIONS
+        const writingPieces = [
+            {
+                category: "Feature Article (2nd Winner)",
+                title: "Telisik Ruang Aman di Tengah Ancaman",
+                meta: "LKJTN Kenal Bahana 2026 • LPM Bahana Mahasiswa UNRI",
+                body: `
+                    <p class="italic text-slate-500 border-l-2 border-rose-400 pl-3">"Di balik gemuruh kesibukan ruang publik dan akademis, rasa aman kerap kali menjadi komoditas langka bagi perempuan. Membangun ruang aman bukan sekadar menyediakan bilik fisik, melainkan merajut sistem perlindungan yang nyata."</p>
+                    <p>Dalam karya feature jurnalistik nasional ini, artikel mengulas secara mendalam bagaimana fasilitas pendidikan dan publik merespons isu keselamatan perempuan. Melalui studi kasus dan wawancara dengan penyintas serta ahli hukum, tulisan ini membedah celah regulasi serta mendorong langkah konkret penciptaan ekosistem kampus yang benar-benar inklusif dan bebas dari ancaman.</p>
+                    <p>Karya ini dianugerahi <strong>Juara II</strong> dalam Lomba Karya Jurnalistik Tingkat Nasional (LKJTN) Kenal Bahana 2026 di Universitas Riau.</p>
+                `
+            },
+            {
+                category: "Flash Fiction (Gold Medal)",
+                title: "Whispers Across the Horizon",
+                meta: "UNNES English Flash Fiction Contest 2026 • FBS UNNES",
+                body: `
+                    <p class="italic text-slate-500 border-l-2 border-amber-400 pl-3">"The lighthouse didn’t just beam light into the fog; it collected memories from the waves. And tonight, the tide brought back a sentence she thought she had buried forever."</p>
+                    <p>A gripping 500-word flash fiction piece exploring themes of nostalgia, unspoken farewells, and emotional healing set against a coastal backdrop. Designed with vivid sensory imagery and precise vocabulary, the piece captivated the national jury at Universitas Negeri Semarang.</p>
+                    <p>Awarded the <strong>Gold Medal</strong> with an official score range of 80-100 among nationwide university contestants.</p>
+                `
+            },
+            {
+                category: "Journalistic Coverage",
+                title: "Institutional Coverage & Leadership Interviews",
+                meta: "Humas Universitas Negeri Malang (UM) • 50+ Articles Published",
+                body: `
+                    <p>Sebagai Journalism Intern di Humas Universitas Negeri Malang (Februari 2026 - Sekarang), Nazhifa telah mempublikasikan lebih dari 50 artikel berita resmi universitas.</p>
+                    <ul class="list-disc list-inside space-y-1.5 text-xs text-slate-600">
+                        <li><strong>Liputan Wawancara Rektorat:</strong> Menuliskan laporan strategis kebijakan pengembangan kampus dan kerja sama internasional.</li>
+                        <li><strong>Inovasi Riset Dosen & Mahasiswa:</strong> Mengolah laporan akademis yang kompleks menjadi artikel berita yang informatif dan populer.</li>
+                        <li><strong>Event Reporting:</strong> Meliput wisuda, seminar internasional (iNELTAL), dan pengabdian masyarakat secara real-time.</li>
+                    </ul>
+                `
+            }
+        ];
+
+        function openWritingModal(idx) {
+            const data = writingPieces[idx];
+            if (!data) return;
+
+            document.getElementById('wm-category').textContent = data.category;
+            document.getElementById('wm-title').textContent = data.title;
+            document.getElementById('wm-meta').textContent = data.meta;
+            document.getElementById('wm-body').innerHTML = data.body;
+
+            const modal = document.getElementById('writing-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeWritingModal() {
+            const modal = document.getElementById('writing-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // 7. AWARD INSPECTOR MODAL DATA & FUNCTIONS
+        const awardPieces = [
+            {
+                title: "Pemenang Medali Emas – English Flash Fiction Contest",
+                issuer: "FBS Universitas Negeri Semarang (UNNES)",
+                date: "10 Oktober 2026",
+                code: "NOMOR: B/17011/UN37.1.2/JM.02.00/2026",
+                desc: "Sertifikat penghargaan sebagai Pemenang Medali Emas pada Lomba Bahasa dan Seni Tingkat Nasional cabang English Flash Fiction Contest dengan skor 80-100. Ditandatangani oleh PLH Dekan FBS UNNES Prof. Heri Yanto, M.B.A., Ph.D.",
+                badge: "Gold Medalist",
+                icon: "fa-medal",
+                color: "amber"
+            },
+            {
+                title: "Juara 1 Lomba Poster Muslimah Inspire Series",
+                issuer: "UKM-KI Universitas Airlangga",
+                date: "1 September - 1 November 2026",
+                code: "NOMOR: 318/B.5/STF.MIS/UKMKI/X/2026",
+                desc: "Sertifikat Juara 1 Lomba Poster bertema 'Islam Solusi Ruang Aman bagi Perempuan' dengan perolehan 120 SKP. Ditandatangani oleh Direktur Kemahasiswaan Universitas Airlangga Dr. Eko Supeno, Drs., M.Si.",
+                badge: "Juara 1",
+                icon: "fa-trophy",
+                color: "rose"
+            },
+            {
+                title: "Juara 2 Lomba Feature LKJTN Kenal Bahana",
+                issuer: "LPM Bahana Mahasiswa Universitas Riau",
+                date: "Oktober 2026",
+                code: "NOMOR: 066/SRTF/PANPEL-KJKLN/BM-UNRI/KE/X/2026",
+                desc: "Sertifikat Penghargaan Juara II Lomba Feature Karya Jurnalistik Tingkat Nasional bertema 'Telisik Ruang Aman di Tengah Ancaman'. Ditandatangani oleh Pemimpin Umum Sakina Wirda Tuljannah.",
+                badge: "Juara 2",
+                icon: "fa-award",
+                color: "slate"
+            },
+            {
+                title: "Siswa Tersertifikasi Gemini (Universitas)",
+                issuer: "Google for Education",
+                date: "Masa Berlaku: 24/10/2026 – 24/10/2029",
+                code: "Kualifikasi Google AI Education",
+                desc: "Sertifikasi resmi yang menunjukkan pengetahuan, keterampilan, dan kompetensi dasar yang diperlukan untuk menggunakan AI Google di lingkungan pendidikan universitas.",
+                badge: "Google Certified",
+                icon: "fa-google",
+                color: "blue"
+            },
+            {
+                title: "Juara III Lomba Menulis Cerpen 2026",
+                issuer: "Majalah Komunikasi Universitas Negeri Malang",
+                date: "2026",
+                code: "Publikasi Resmi Kampus UM",
+                desc: "Penghargaan Juara 3 dalam ajang penulisan cerita pendek yang diselenggarakan oleh Majalah Komunikasi UM.",
+                badge: "Juara 3",
+                icon: "fa-pen",
+                color: "amber"
+            },
+            {
+                title: "Top 10 Finalis Sayembara Cerpen Malam Sastra",
+                issuer: "LPM Perspektif FISIP",
+                date: "5 Oktober 2026",
+                code: "NOMOR: 728/MALAMSASTRA/PERSPEKTIF/XIX/2026",
+                desc: "Terpilih sebagai finalis 10 besar (Peringkat 9) dalam Sayembara Cerpen Malam Sastra 2026.",
+                badge: "Top 10 Finalist",
+                icon: "fa-star",
+                color: "purple"
+            },
+            {
+                title: "Juara II Lomba Poster EDAC ke-70",
+                issuer: "English Department Art & Collaboration",
+                date: "2024",
+                code: "Penghargaan EDAC 70th",
+                desc: "Meraih Juara 2 dalam kompetisi desain poster kreatif pada peringatan EDAC ke-70 Jurusan Sastra Inggris.",
+                badge: "Juara 2",
+                icon: "fa-palette",
+                color: "rose"
+            },
+            {
+                title: "Peserta iNELTAL Pre-Conference Guest Lecture 2026",
+                issuer: "Universitas Negeri Malang",
+                date: "17 September 2026",
+                code: "NOMOR: 17.9.1/UN32.2/DT/2026",
+                desc: "Certificate of Appreciation sebagai peserta International Conference on English Language Teaching and Applied Linguistics (iNELTAL) bertema 'Contemporary Perspectives in English Studies'.",
+                badge: "iNELTAL 2026",
+                icon: "fa-graduation-cap",
+                color: "emerald"
+            },
+            {
+                title: "Peserta Guest Lecture Dept. Sastra Inggris",
+                issuer: "Universitas Negeri Malang",
+                date: "26 Oktober 2026",
+                code: "NOMOR: 23.10.62/UN32.2.5.2/DT/2026",
+                desc: "Certificate of Appreciation atas keikutsertaan dalam Guest Lecture 'Beyond the Classroom Task: Designing Meaningful Projects for English Language Learning'.",
+                badge: "Guest Lecture",
+                icon: "fa-book-bookmark",
+                color: "sky"
+            },
+            {
+                title: "Sertifikasi Pelatihan Copywriting",
+                issuer: "Harisenin.com",
+                date: "Pelatihan Intensif",
+                code: "HARISENIN-CPW-2026",
+                desc: "Menyelesaikan pelatihan intensif copywriting yang mencakup penyusunan pesan persuasif, penentuan target audiens, dan penulisan konten berkonversi tinggi.",
+                badge: "Copywriting",
+                icon: "fa-bullhorn",
+                color: "rose"
+            },
+            {
+                title: "Pelatihan SDM Standar SKKNI No. 149/2020",
+                issuer: "Afaq Academy",
+                date: "Standar Kompetensi Nasional",
+                code: "SKKNI-HR-149/2020",
+                desc: "Mengikuti pelatihan sumber daya manusia berbasis Standar Kompetensi Kerja Nasional Indonesia di Afaq Academy.",
+                badge: "SKKNI HR",
+                icon: "fa-user-gear",
+                color: "purple"
+            },
+            {
+                title: "Sertifikat Panitia BUBAR LASBER 2025",
+                issuer: "Komunitas Laskar Belajar Kota Malang",
+                date: "23 Maret 2025",
+                code: "Sertifikat Panitia Pelaksana",
+                desc: "Sertifikat Penghargaan sebagai Panitia dalam kegiatan BUBAR LASBER 2025 (Buka Akbar Laskar Belajar) yang diselenggarakan oleh Komunitas Laskar Belajar di Kota Malang. Ditandatangani Ketua Umum Diannita Retno Pramesti.",
+                badge: "Panitia BUBAR",
+                icon: "fa-hand-holding-heart",
+                color: "pink"
+            },
+            {
+                title: "Certificate of Appreciation – 71st EDAC 2025",
+                issuer: "English Department, Universitas Negeri Malang",
+                date: "11 October 2025",
+                code: "NO. 13.10.27/UN32.2.1/KM/2025",
+                desc: "Certificate presented to Nazhifa Filza Darayanicha as Member of Security Division in recognition of her participation in the 71st English Department Art and Collaboration (EDA).",
+                badge: "Security Division",
+                icon: "fa-shield-halved",
+                color: "rose"
+            },
+            {
+                title: "Panitia Keamanan Abdi Bakti Sastra 2025",
+                issuer: "Fakultas Sastra Universitas Negeri Malang",
+                date: "2025",
+                code: "Panitia Abdi Bakti Sastra",
+                desc: "Anggota panitia divisi keamanan dalam program pengabdian masyarakat Abdi Bakti Sastra 2025.",
+                badge: "Keamanan",
+                icon: "fa-user-shield",
+                color: "indigo"
+            },
+            {
+                title: "Divisi Dokumentasi & Dekorasi ALJABAR",
+                issuer: "Aksi Layanan dan Pengabdian Masyarakat",
+                date: "Program Pengabdian",
+                code: "Panitia ALJABAR",
+                desc: "Anggota divisi dokumentasi dan dekorasi dalam program Aksi Layanan dan Pengabdian Masyarakat (ALJABAR).",
+                badge: "Dokumentasi & Dekorasi",
+                icon: "fa-camera",
+                color: "teal"
+            }
+        ];
+
+        function openAwardModal(idx) {
+            const data = awardPieces[idx];
+            if (!data) return;
+
+            document.getElementById('am-badge').textContent = data.badge;
+            document.getElementById('am-title').textContent = data.title;
+            document.getElementById('am-issuer').textContent = `${data.issuer} • ${data.date}`;
+            document.getElementById('am-code').textContent = data.code;
+            document.getElementById('am-desc').textContent = data.desc;
+            
+            const iconEl = document.getElementById('am-icon');
+            iconEl.className = `fa-solid ${data.icon}`;
+
+            const modal = document.getElementById('award-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAwardModal() {
+            const modal = document.getElementById('award-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
+</html>
